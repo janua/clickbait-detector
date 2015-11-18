@@ -29,5 +29,19 @@
        [:span {:class "header-main"} [:h2 "Guardian"]]
        [:span menu-items-html]]]
      [:div {:class "content"}
-       (map render-item items)]
+       (map render-item items)]]
+    [:script {:src "/js/compiled/clickbait-detector.js" :type "text/javascript"}]]))
+
+(defn main-html-with-reagent [items]
+  (html5
+   [:head
+    [:link {:href "/css/style.css" :rel "stylesheet"}]
+    [:script {:id "data" :type "application/edn"}(pr-str items)]]
+   [:body
+    [:div {:class "wrapper"}
+     [:header
+      [:div {:class "header"}
+       [:span {:class "header-main"} [:h2 "Guardian"]]
+       [:span menu-items-html]]]
+     [:div {:class "content" :id "application"}]]
     [:script {:src "/js/compiled/clickbait-detector.js" :type "text/javascript"}]]))
