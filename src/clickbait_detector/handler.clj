@@ -20,12 +20,16 @@
 
 (defroutes app-routes
   (GET "/" [] "Welcome!")
-  (GET "/get/*" [& glob]
+  (GET "/static/*" [& glob]
        (let [path (:* glob)]
          (templates/main-html (check-clickbait (guardian/get-items-for-path! path)))))
+  (GET "/get/*" [& glob]
+       (let [path (:* glob)]
+         (templates/main-html-with-reagent (check-clickbait (guardian/get-items-for-path! path)))))
+  (route/files "" {:root "resources"})
   (route/files "" {:root "resources"})
   (route/resources "/")
-  (route/not-found "Page not found"))
+  (route/not-found "Page not found!"))
 
 
 (def app
