@@ -18,7 +18,8 @@
                  [cljs-http "0.1.37"]
                  [hiccup "1.0.5"]
                  [clj-http "2.0.0"]
-                 [org.clojure/data.json "0.2.6"]]
+                 [org.clojure/data.json "0.2.6"]
+                 [reagent "0.5.1"]]
 
   :plugins [[lein-cljsbuild "1.1.1"]
             [lein-figwheel "0.5.0-1"]]
