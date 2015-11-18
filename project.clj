@@ -34,7 +34,8 @@
     :builds [{:id "dev"
               :source-paths ["src"]
 
-              :figwheel { :on-jsload "clickbait-detector.core/on-js-reload" }
+              :figwheel true
+              ;:figwheel { :on-jsload "clickbait-detector.core/on-js-reload" }
 
               :compiler {:main clickbait-detector.core
                          :asset-path "/js/compiled/out"
@@ -54,7 +55,8 @@
              ;; :server-ip "127.0.0.1"
 
              :css-dirs ["resources/public/css"] ;; watch and update CSS
-             ;:http-server-root clickbait-detector.handler/handler ;"public"
+             :http-server-root clickbait-detector.handler/handler
+             ;:http-server-root "public"
              :server-port 8000
              ;; Start an nREPL server into the running figwheel process
              ;; :nrepl-port 7888
