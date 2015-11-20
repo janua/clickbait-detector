@@ -9,14 +9,19 @@
 
 (defonce show (r/atom true))
 
+(defn clickbait-classes [item]
+  (if
+    (:clickbait item)
+    "clickbait"
+    (if
+      (true? @show)
+      "noclickbait"
+      "noclickbait noshow")))
+
 (defn item [item]
   (let [{:keys [headline id]} item
-        clickbait (if (:clickbait item)
-                  "clickbait"
-                  (if (true? @show)
-                    "noclickbait"
-                    "noclickbait noshow"))
-        item-classes (str "item " clickbait)]
+        clickbait-style (clickbait-classes item)
+        item-classes (str "item " clickbait-style)]
   [:div {:key id :class item-classes}
    [:p {:class "headline"} headline]
    [:aside {:class "section"} id]]))
